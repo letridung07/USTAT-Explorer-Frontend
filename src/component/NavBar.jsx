@@ -70,7 +70,7 @@ export default function ButtonAppBar() {
                             </MenuItem>
                         ))}
                     </Select>
-                    
+
                     {/* Dropdown menu for seasons*/}
                     <Select
                         value={season}
