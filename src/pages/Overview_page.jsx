@@ -1,22 +1,25 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { useState, useEffect } from "react";
 
-const statistics = [
-    { title: "Completed Matches", value: "380" },
-    { title: "Upcoming Matches", value: "0" },
-    { title: "Total Goals", value: "1045" },
-    { title: "Total xG", value: "1162.40" },
-    { title: "Goals / Match", value: "2.75" },
-    { title: "xG / Match", value: "3.06" },
-    { title: "Home Win %", value: "42.6%" },
-    { title: "Away Wins", value: "114" },
-    { title: "Home Wins", value: "162" },
-    { title: "Draws", value: "104" },
-    { title: "Avg Home xG", value: "1.69" },
-    { title: "Avg Away xG", value: "1.36" },
-];
+
 
 export default function OverviewStats() {
+    const [statistics, setStatistics] = useState([
+        { title: "Completed Matches", value: "380" },
+        { title: "Upcoming Matches", value: "0" },
+        { title: "Total Goals", value: "1045" },
+        { title: "Total xG", value: "1162.40" },
+        { title: "Goals / Match", value: "2.75" },
+        { title: "xG / Match", value: "3.06" },
+        { title: "Home Win %", value: "42.6%" },
+        { title: "Away Wins", value: "114" },
+        { title: "Home Wins", value: "162" },
+        { title: "Draws", value: "104" },
+        { title: "Avg Home xG", value: "1.69" },
+        { title: "Avg Away xG", value: "1.36" },
+    ]);
+    
     return (
         <Box
             sx={{
