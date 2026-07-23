@@ -6,10 +6,13 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+import EmojiEventsOutlinedIcon from "@mui/icons-material/EmojiEventsOutlined";
+import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 
 export default function ButtonAppBar() {
     const [league, setLeague] = useState("EPL");
     const [season, setSeason] = useState(2025);
+    const [pageTitle, setPageTitle] = useState("Overview")
 
     const leagues = [
         "EPL",
@@ -25,44 +28,57 @@ export default function ButtonAppBar() {
     ];
 
     const dropdownStyles = {
-        color: "white",
-        minWidth: 120,
+        minWidth: 170, // Width of dropmenu
+        borderRadius: 1, // Curve coners
+        fontSize: 17, // Text size in the dropmenu
+        fontWeight: 600,
+    };
 
-        "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: "rgba(255, 255, 255, 0.6)",
-        },
-
-        "&:hover .MuiOutlinedInput-notchedOutline": {
-            borderColor: "white",
-        },
-
-        "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-            borderColor: "white",
-        },
-
-        "& .MuiSvgIcon-root": {
-            color: "white",
-        },
+    const emojiStyles = {
+        fontSize: 24,
+        marginRight: 1.5,
     };
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
-                <Toolbar sx={{ gap: 2 }}>
-                    <Typography
-                        variant="h5"
-                        component="div"
-                        sx={{ flexGrow: 1 }}
-                    >
-                        U-STAT EXPLORER
-                    </Typography>
+        <Box sx={{}}>
+            <Toolbar sx={{ alignItems: "center" }}>
+                {/* Slash & Title */}
+                <Box
+                    sx={{
+                        flexGrow: 1, // how much an element grows relative to other flexible items
+                        display: "flex", // make slash and title stay on the same horizontal
+                        gap: 1.5, // gap between slash and title
+                        alignItems: "center", // make slash and title align horizontally
+                    }}
+                >
+                    <Box
+                        sx={{
+                            width: 6,
+                            height: 36,
+                            bgcolor: "#2e5ae8",
+                            transform: "skew(-8deg)", // make the box tilt so it looks like the slash
+                        }}
+                    />
 
-                    {/* Dropdown menu for leagues*/}
+                    <Typography
+                        component="div"
+                        sx={{ fontWeight: 800, fontSize: 25, transform: "scaleY(1.2)"}}
+                    >
+                        {pageTitle}
+                    </Typography>
+                </Box>
+
+                {/* Dropdown menu for leagues*/}
+                <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
                     <Select
                         value={league}
                         onChange={(event) => setLeague(event.target.value)}
                         size="small"
                         sx={dropdownStyles}
+                        // Trophy emoji
+                        startAdornment={
+                            <EmojiEventsOutlinedIcon sx={emojiStyles} />
+                        }
                     >
                         {leagues.map((leagueName) => (
                             <MenuItem key={leagueName} value={leagueName}>
@@ -77,6 +93,10 @@ export default function ButtonAppBar() {
                         onChange={(event) => setSeason(event.target.value)}
                         size="small"
                         sx={dropdownStyles}
+                        // Calendar emoji
+                        startAdornment={
+                            <CalendarMonthOutlinedIcon sx={emojiStyles} />
+                        }
                     >
                         {seasons.map((seasonYear) => (
                             <MenuItem key={seasonYear} value={seasonYear}>
@@ -85,8 +105,8 @@ export default function ButtonAppBar() {
                             </MenuItem>
                         ))}
                     </Select>
-                </Toolbar>
-            </AppBar>
+                </Box>
+            </Toolbar>
         </Box>
     );
 }
