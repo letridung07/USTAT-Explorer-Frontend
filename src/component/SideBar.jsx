@@ -1,7 +1,6 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
+import Button from "@mui/material/Button"
 
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
@@ -99,6 +98,8 @@ const navigationButtonSx = {
     display: "flex",
     alignItems: "center",
     gap: 1.5,
+    justifyContent: "left", // Override Button default centered content
+    textTransform: "none", // Override Button default uppercase textTransform
 
     "& .MuiListItemIcon-root": {
         minWidth: 34,
@@ -143,9 +144,9 @@ export default function Sidebar() {
             </Box>
 
             {/* Loop to create buttons */}
-            <List sx={navigationListSx}>
+            <Box sx={navigationListSx}>
                 {menuItems.map((item) => (
-                    <ListItemButton
+                    <Button
                         key={item.title}
                         component={NavLink}
                         to={item.path}
@@ -155,9 +156,9 @@ export default function Sidebar() {
                         {item.icon}
 
                         <Typography>{item.title}</Typography>
-                    </ListItemButton>
+                    </Button>
                 ))}
-            </List>
+            </Box>
         </Box>
     );
 }
