@@ -9,7 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import EmojiEventsOutlinedIcon from "@mui/icons-material/EmojiEventsOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 
-export default function ButtonAppBar() {
+export default function NavBar() {
     const [league, setLeague] = useState("EPL");
     const [season, setSeason] = useState(2025);
     const [pageTitle, setPageTitle] = useState("Overview")
