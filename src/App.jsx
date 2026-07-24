@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { Box } from "@mui/material";
+import { Box, CssBaseline } from "@mui/material";
 
 import NavBar from "./component/NavBar.jsx";
 import OverviewStats from "./pages/Overview_page.jsx";
@@ -44,6 +44,9 @@ const bannerDetails = {
 function App() {
     return (
         <Box sx={appContainerSx}>
+            {/* removes the browser’s default body margin (white space) */}
+            <CssBaseline /> 
+
             <SideBar />
 
             <Box component="main" sx={mainContentSx}>
