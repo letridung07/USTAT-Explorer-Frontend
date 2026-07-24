@@ -56,7 +56,16 @@ export default function ButtonAppBar() {
                             width: 6,
                             height: 36,
                             bgcolor: "#2e5ae8",
-                            transform: "skew(-8deg)", // make the box tilt so it looks like the slash
+                            transform: "skew(-10deg)", // make the box tilt so it looks like the slash
+                        }}
+                    />
+
+                    <Box
+                        sx={{
+                            width: 6,
+                            height: 36,
+                            bgcolor: "#2e5ae8",
+                            transform: "skew(-10deg)", // make the box tilt so it looks like the slash
                         }}
                     />
 
@@ -68,8 +77,9 @@ export default function ButtonAppBar() {
                     </Typography>
                 </Box>
 
-                {/* Dropdown menu for leagues*/}
+                {/* 2 select buttons */}
                 <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+                    {/* Dropdown menu for leagues*/}
                     <Select
                         value={league}
                         onChange={(event) => setLeague(event.target.value)}
