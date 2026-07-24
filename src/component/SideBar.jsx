@@ -55,8 +55,8 @@ const sidebarSx = {
     flexDirection: "column", // Vertical line up
 
     boxSizing: "border-box",
-    paddingLeft: 2,
-    paddingTop: 3,
+    paddingX: 2,
+    paddingY: 3,
 
     color: "white",
 };
@@ -65,9 +65,8 @@ const logoContainerSx = {
     display: "flex",
     alignItems: "center",
     gap: 1.5,
-    marginBottom: 4,
-    paddingLeft: 0.5,
-    paddingTop: 4,
+    paddingX: 0.5,
+    paddingY: 4,
 };
 
 const logoIconSx = {

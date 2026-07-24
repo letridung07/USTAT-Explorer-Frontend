@@ -9,8 +9,7 @@ import SideBar from "./component/SideBar.jsx";
 const appContainerSx = {
     display: "flex", // line up
     minHeight: "100vh", // Make the page fill the whole screen
-    gap: 2, // space away from the sidebar
-    // gradient background for the whole page
+        // gradient background for the whole page
     backgroundImage: `
         linear-gradient(
             to bottom,
