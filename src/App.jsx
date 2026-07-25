@@ -4,9 +4,15 @@ import { useState } from "react";
 import { Box, CssBaseline } from "@mui/material";
 
 import NavBar from "./component/NavBar.jsx";
-import OverviewStats from "./pages/Overview_page.jsx";
 import SideBar from "./component/SideBar.jsx";
 import LeagueBanner from "./component/LeagueBanner.jsx";
+
+import OverviewStats from "./pages/OverviewPage.jsx";
+import MatchesPage from "./pages/MatchesPage.jsx";
+import LeagueTablePage from "./pages/LeagueTablePage.jsx";
+import PlayersPage from "./pages/PlayersPage.jsx";
+import CompareTeamsPage from "./pages/CompareTeamsPage.jsx";
+import ComparePlayersPage from "./pages/ComparePlayersPage.jsx";
 
 import epl_icon from "./assets/epl_icon.png";
 import bundesliga_icon from "./assets/bundesliga_icon.png";
@@ -15,6 +21,8 @@ import ligue_1_icon from "./assets/ligue_1_icon.png";
 import serie_a_icon from "./assets/serie_a_icon.png";
 import rfpl_icon from "./assets/rfpl_icon.png";
 import overview_banner_background from "./assets/overview_banner_background.png";
+
+
 
 // @@@@@@@@@@@ ALL SX GOES HERE @@@@@@@@@@@@@@@@@@
 const appContainerSx = {
@@ -92,13 +100,13 @@ function App() {
                 <Routes>
                     {/* Only showing Overview page for now */}
                     <Route path="/" element={<OverviewStats />} />
-                    <Route path="/matches" element={<OverviewStats />} />
-                    <Route path="/league-table" element={<OverviewStats />} />
-                    <Route path="/players" element={<OverviewStats />} />
-                    <Route path="/compare-teams" element={<OverviewStats />} />
+                    <Route path="/matches" element={<MatchesPage />} />
+                    <Route path="/league-table" element={<LeagueTablePage />} />
+                    <Route path="/players" element={<PlayersPage />} />
+                    <Route path="/compare-teams" element={<CompareTeamsPage />} />
                     <Route
                         path="/compare-players"
-                        element={<OverviewStats />}
+                        element={<ComparePlayersPage />}
                     />
                 </Routes>
             </Box>
