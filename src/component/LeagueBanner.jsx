@@ -1,6 +1,8 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
+import banner_background from "../assets/banner_background.png";
+
 // This must be a function because backgroundImage can change.
 const bannerSx = (backgroundImage) => ({
     // width: "100%",
@@ -64,10 +66,9 @@ export default function LeagueBanner({
     leagueName,
     seasonName,
     leagueLogo,
-    backgroundImage,
 }) {
     return (
-        <Box sx={bannerSx(backgroundImage)}>
+        <Box sx={bannerSx(banner_background)}>
             <Box sx={bannerContentSx}>
                 <Box
                     component="img"

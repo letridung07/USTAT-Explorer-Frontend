@@ -20,7 +20,6 @@ import la_liga_icon from "./assets/la_liga_icon.png";
 import ligue_1_icon from "./assets/ligue_1_icon.png";
 import serie_a_icon from "./assets/serie_a_icon.png";
 import rfpl_icon from "./assets/rfpl_icon.png";
-import overview_banner_background from "./assets/overview_banner_background.png";
 
 
 
@@ -94,7 +93,6 @@ function App() {
                     leagueName={leagueNames[selectedLeague]}
                     seasonName={seasonName}
                     leagueLogo={leaguesLogos[selectedLeague]}
-                    backgroundImage={overview_banner_background}
                 />
 
                 <Routes>
