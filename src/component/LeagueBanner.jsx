@@ -62,7 +62,7 @@ const seasonSx = {
 
 export default function LeagueBanner({
     leagueName,
-    season,
+    seasonName,
     leagueLogo,
     backgroundImage,
 }) {
@@ -81,7 +81,7 @@ export default function LeagueBanner({
                 </Typography>
 
                 <Typography sx={seasonSx}>
-                    {season}
+                    {seasonName}
                 </Typography>
             </Box>
         </Box>

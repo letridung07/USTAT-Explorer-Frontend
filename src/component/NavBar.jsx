@@ -9,9 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import EmojiEventsOutlinedIcon from "@mui/icons-material/EmojiEventsOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 
-export default function NavBar() {
-    const [league, setLeague] = useState("EPL");
-    const [season, setSeason] = useState(2025);
+export default function NavBar({selectedLeague, onLeagueChange, selectedSeason, onSeasonChange}) {
     const [pageTitle, setPageTitle] = useState("Overview")
 
     const leagues = [
@@ -81,8 +79,8 @@ export default function NavBar() {
                 <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
                     {/* Dropdown menu for leagues*/}
                     <Select
-                        value={league}
-                        onChange={(event) => setLeague(event.target.value)}
+                        value={selectedLeague}
+                        onChange={(event) => onLeagueChange(event.target.value)}
                         size="small"
                         sx={dropdownStyles}
                         // Trophy emoji
@@ -99,8 +97,8 @@ export default function NavBar() {
 
                     {/* Dropdown menu for seasons*/}
                     <Select
-                        value={season}
-                        onChange={(event) => setSeason(event.target.value)}
+                        value={selectedSeason}
+                        onChange={(event) => onSeasonChange(event.target.value)}
                         size="small"
                         sx={dropdownStyles}
                         // Calendar emoji
