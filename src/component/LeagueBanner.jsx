@@ -10,7 +10,6 @@ const bannerSx = (backgroundImage) => ({
     boxSizing: "border-box",
     borderRadius: 3,
     overflow: "hidden",
-    
 
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: "cover",
@@ -25,7 +24,6 @@ const bannerSx = (backgroundImage) => ({
 
     marginY: 1.5,
     marginX: 2,
-
 });
 
 // Controls the layout of the logo and text.
@@ -38,10 +36,11 @@ const bannerContentSx = {
 
 // Controls the size and position of the league logo.
 const leagueLogoSx = {
-    width: 50,
-    height: 50,
+    width: 80,
+    height: 80,
     objectFit: "contain",
     marginBottom: 0.5,
+    marginRight: 2
 };
 
 // Styles the league name.
@@ -62,28 +61,19 @@ const seasonSx = {
     lineHeight: 1,
 };
 
-export default function LeagueBanner({
-    leagueName,
-    seasonName,
-    leagueLogo,
-}) {
+export default function LeagueBanner({ leagueName, seasonName, leagueLogo }) {
     return (
         <Box sx={bannerSx(banner_background)}>
+            <Box
+                component="img"
+                src={leagueLogo}
+                alt={`${leagueName} logo`}
+                sx={leagueLogoSx}
+            />
             <Box sx={bannerContentSx}>
-                <Box
-                    component="img"
-                    src={leagueLogo}
-                    alt={`${leagueName} logo`}
-                    sx={leagueLogoSx}
-                />
+                <Typography sx={leagueNameSx}>{leagueName}</Typography>
 
-                <Typography sx={leagueNameSx}>
-                    {leagueName}
-                </Typography>
-
-                <Typography sx={seasonSx}>
-                    {seasonName}
-                </Typography>
+                <Typography sx={seasonSx}>{seasonName}</Typography>
             </Box>
         </Box>
     );
