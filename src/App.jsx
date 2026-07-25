@@ -14,12 +14,7 @@ import PlayersPage from "./pages/PlayersPage.jsx";
 import CompareTeamsPage from "./pages/CompareTeamsPage.jsx";
 import ComparePlayersPage from "./pages/ComparePlayersPage.jsx";
 
-import epl_icon from "./assets/epl_icon.png";
-import bundesliga_icon from "./assets/bundesliga_icon.png";
-import la_liga_icon from "./assets/la_liga_icon.png";
-import ligue_1_icon from "./assets/ligue_1_icon.png";
-import serie_a_icon from "./assets/serie_a_icon.png";
-import rfpl_icon from "./assets/rfpl_icon.png";
+import { formatSeason, LEAGUES } from "./data/leagueCatalog.js";
 
 
 
@@ -50,29 +45,15 @@ const mainContentSx = {
 
 // @@@@@@@@@@@ ALL SX IS ABOVE @@@@@@@@@@@@@@@@@@
 
-const leagueNames = {
-    "EPL": "English Premier League",
-    "La Liga": "Spanish La Liga",
-    "Serie A": "Italian Serie A",
-    "Bundesliga": "German Bundesliga",
-    "Ligue 1": "French Ligue 1",
-    "RFPL": "Russian Football Premier League",
-};
 
-const leaguesLogos = {
-    "EPL": epl_icon,
-    "La Liga": la_liga_icon,
-    "Serie A": serie_a_icon,
-    "Bundesliga": bundesliga_icon,
-    "Ligue 1": ligue_1_icon,
-    "RFPL": rfpl_icon,
-}
 
 function App() {
-    const [selectedLeague, setSelectedLeague] = useState("EPL");
+    const [selectedLeague, setSelectedLeague] = useState("epl");
     const [selectedSeason, setSelectedSeason] = useState(2025);
 
-    const seasonName = `${selectedSeason}/${selectedSeason + 1}`;
+    const seasonName = formatSeason(selectedSeason);
+
+    const selectedLeagueDetails = LEAGUES.find((item) => item.id === selectedLeague)
 
     return (
         <Box sx={appContainerSx}>
@@ -90,9 +71,9 @@ function App() {
                 />
 
                 <LeagueBanner
-                    leagueName={leagueNames[selectedLeague]}
+                    leagueName={selectedLeagueDetails.fullName}
                     seasonName={seasonName}
-                    leagueLogo={leaguesLogos[selectedLeague]}
+                    leagueLogo={selectedLeagueDetails.logo}
                 />
 
                 <Routes>

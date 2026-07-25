@@ -9,21 +9,19 @@ import MenuItem from "@mui/material/MenuItem";
 import EmojiEventsOutlinedIcon from "@mui/icons-material/EmojiEventsOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 
-export default function NavBar({selectedLeague, onLeagueChange, selectedSeason, onSeasonChange}) {
-    const [pageTitle, setPageTitle] = useState("Overview")
+import {
+    LEAGUES,
+    AVAILABLE_SEASONS,
+    formatSeason,
+} from "../data/leagueCatalog";
 
-    const leagues = [
-        "EPL",
-        "La Liga",
-        "Serie A",
-        "Bundesliga",
-        "Ligue 1",
-        "RFPL",
-    ];
-
-    const seasons = [
-        2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014,
-    ];
+export default function NavBar({
+    selectedLeague,
+    onLeagueChange,
+    selectedSeason,
+    onSeasonChange,
+}) {
+    const [pageTitle, setPageTitle] = useState("Overview");
 
     const dropdownStyles = {
         minWidth: 170, // Width of dropmenu
@@ -69,7 +67,11 @@ export default function NavBar({selectedLeague, onLeagueChange, selectedSeason, 
 
                     <Typography
                         component="div"
-                        sx={{ fontWeight: 800, fontSize: 25, transform: "scaleY(1.2)"}}
+                        sx={{
+                            fontWeight: 800,
+                            fontSize: 25,
+                            transform: "scaleY(1.2)",
+                        }}
                     >
                         {pageTitle}
                     </Typography>
@@ -88,9 +90,12 @@ export default function NavBar({selectedLeague, onLeagueChange, selectedSeason, 
                             <EmojiEventsOutlinedIcon sx={emojiStyles} />
                         }
                     >
-                        {leagues.map((leagueName) => (
-                            <MenuItem key={leagueName} value={leagueName}>
-                                {leagueName}
+                        {LEAGUES.map((league) => (
+                            <MenuItem
+                                key={league.id}
+                                value={league.id}
+                            >
+                                {league.shortName}
                             </MenuItem>
                         ))}
                     </Select>
@@ -106,10 +111,10 @@ export default function NavBar({selectedLeague, onLeagueChange, selectedSeason, 
                             <CalendarMonthOutlinedIcon sx={emojiStyles} />
                         }
                     >
-                        {seasons.map((seasonYear) => (
+                        {AVAILABLE_SEASONS.map((seasonYear) => (
                             <MenuItem key={seasonYear} value={seasonYear}>
-                                {/* display season title */}
-                                {`${seasonYear}/${seasonYear + 1}`}
+                                {/* display season name */}
+                                {formatSeason(seasonYear)}
                             </MenuItem>
                         ))}
                     </Select>
