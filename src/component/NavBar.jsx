@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -15,14 +15,28 @@ import {
     formatSeason,
 } from "../data/leagueCatalog";
 
+// A lookup table for the Title to update according to the page
+const pageTitles = {
+    "/": "Overview",
+    "/matches": "Matches",
+    "/league-table": "League Table",
+    "/players": "Players",
+    "/compare-players": "Compare Players",
+    "/compare-teams": "Compare Teams",
+};
+
 export default function NavBar({
     selectedLeague,
     onLeagueChange,
     selectedSeason,
     onSeasonChange,
 }) {
-    const [pageTitle, setPageTitle] = useState("Overview");
+    const location = useLocation(); // useLocation returns an object
+    const pathname = location.pathname; // extract pathname
 
+    const pageTitle = pageTitles[pathname] || "Page Not Found"; // Look up and get the title
+
+    // @@@@@@@@@@@ ALL SX GOES BELOW HERE @@@@@@@@@@@@@@@@@@
     const dropdownStyles = {
         minWidth: 170, // Width of dropmenu
         borderRadius: 1, // Curve coners
@@ -34,6 +48,7 @@ export default function NavBar({
         fontSize: 24,
         marginRight: 1.5,
     };
+    // @@@@@@@@@@@ ALL SX GOES ABOVE HERE @@@@@@@@@@@@@@@@@@
 
     return (
         <Box sx={{}}>
@@ -91,10 +106,7 @@ export default function NavBar({
                         }
                     >
                         {LEAGUES.map((league) => (
-                            <MenuItem
-                                key={league.id}
-                                value={league.id}
-                            >
+                            <MenuItem key={league.id} value={league.id}>
                                 {league.shortName}
                             </MenuItem>
                         ))}
