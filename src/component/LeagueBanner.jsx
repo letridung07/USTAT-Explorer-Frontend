@@ -31,7 +31,8 @@ const bannerSx = {
     paddingX: 3,
     paddingY: 2,
 
-    marginY: 1.5,
+    
+    marginTop: 1.5,
     marginX: 2,
 };
 
@@ -42,7 +43,7 @@ const bannerContentSx = {
     alignItems: "flex-start",
     gap: 0.5,
     position: "relative",
-    zIndex: 1, // make the text sit above the video
+    // zIndex: 1, // make the text sit above the video
 };
 
 // Controls the size and position of the league logo.
@@ -53,7 +54,7 @@ const leagueLogoSx = {
     marginBottom: 0.5,
     marginRight: 2,
     position: "relative",
-    zIndex: 1, // make the logo sit above the video
+    // zIndex: 1, // make the logo sit above the video
 };
 
 // Styles the league name.
