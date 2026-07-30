@@ -7,7 +7,7 @@ import NavBar from "./component/NavBar.jsx";
 import SideBar from "./component/SideBar.jsx";
 import LeagueBanner from "./component/LeagueBanner.jsx";
 
-import OverviewStats from "./pages/OverviewPage.jsx";
+import OverviewPage from "./pages/OverviewPage.jsx";
 import MatchesPage from "./pages/MatchesPage.jsx";
 import LeagueTablePage from "./pages/LeagueTablePage.jsx";
 import PlayersPage from "./pages/PlayersPage.jsx";
@@ -78,7 +78,7 @@ function App() {
 
                 <Routes>
                     {/* Only showing Overview page for now */}
-                    <Route path="/" element={<OverviewStats />} />
+                    <Route path="/" element={<OverviewPage league={selectedLeagueDetails.apiName} season={selectedSeason}/>} />
                     <Route path="/matches" element={<MatchesPage />} />
                     <Route path="/league-table" element={<LeagueTablePage />} />
                     <Route path="/players" element={<PlayersPage />} />

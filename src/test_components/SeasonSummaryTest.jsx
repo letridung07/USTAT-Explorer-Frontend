@@ -6,6 +6,7 @@ export default function SeasonSummaryTest({league, season}) {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        setError(null)
         async function loadSeasonSummary() {
             try {
                 const data = await getSeasonSummary(league, season);
@@ -19,7 +20,7 @@ export default function SeasonSummaryTest({league, season}) {
         }
 
         loadSeasonSummary();
-    }, []);
+    }, [league, season]);
 
     if (error) {
         return <p>Error: {error}</p>;
