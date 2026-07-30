@@ -1,7 +1,15 @@
-const BASE_URL = ""
+const API_BASE_URL = "http://127.0.0.1:8000";
 
-export default getMetadata = async () => {
-    const response = await fetch(`${BASE_URL}/`)
-    const data = await response.json()
-    return data.results
+export async function getSeasonSummary(league, season) {
+    const response = await fetch(
+        `${API_BASE_URL}/overview/season_summary?league=${league}&season=${season}`,
+    );
+
+    if (!response.ok) {
+        throw new Error(
+            `Failed to get season summary: ${response.status}`,
+        );
+    }
+
+    return response.json();
 }

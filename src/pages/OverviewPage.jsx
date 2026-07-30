@@ -3,6 +3,8 @@ import Box from "@mui/material/Box";
 import SummaryCards from "../page_components/overview/SummaryCards";
 import ScoringOverview from "../page_components/overview/ScoringOverview";
 
+import SeasonSummaryTest from "../test_components/SeasonSummaryTest.jsx";
+
 // Detailed Stats
 const detailGridSx = {
     display: "grid",
@@ -26,7 +28,6 @@ const detailPanelSx = {
 };
 
 export default function OverviewStats() {
-    
     return (
         <Box>
             <SummaryCards />
@@ -38,6 +39,8 @@ export default function OverviewStats() {
                 <Box sx={detailPanelSx}></Box>
                 <Box sx={detailPanelSx}></Box>
             </Box>
+
+            <SeasonSummaryTest league={"EPL"} season={2025}/>
         </Box>
     );
 }
