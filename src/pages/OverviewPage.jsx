@@ -27,7 +27,7 @@ const detailPanelSx = {
     boxShadow: "0 3px 10px rgba(15, 23, 42, 0.08)",
 };
 
-export default function OverviewPage({league, season}) {
+export default function OverviewPage() {
     return (
         <Box>
             <SummaryCards />
@@ -40,7 +40,7 @@ export default function OverviewPage({league, season}) {
                 <Box sx={detailPanelSx}></Box>
             </Box>
 
-            <SeasonSummaryTest league={league} season={season}/>
+            <SeasonSummaryTest/>
         </Box>
     );
 }

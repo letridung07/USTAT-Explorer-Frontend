@@ -6,15 +6,10 @@ const OverviewContext = createContext(null);
 
 
 // function to create and provide shared data
-export function OverviewProvider({ children }) {
+export function OverviewProvider({ children, league, season }) {
     const [seasonSummary, setSeasonSummary] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-
-    // temp fixed values
-    // later, these can come from league and season dropdowns
-    const league = "EPL";
-    const season = 2025;
 
     useEffect(() => {
         async function loadSeasonSummary() {

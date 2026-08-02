@@ -50,6 +50,7 @@ function App() {
 
     const seasonName = formatSeason(selectedSeason);
 
+    // Search in leagueCatalog.js
     const selectedLeagueDetails = LEAGUES.find(
         (item) => item.id === selectedLeague,
     );
@@ -80,7 +81,10 @@ function App() {
                     <Route
                         path="/"
                         element={
-                            <OverviewProvider>
+                            <OverviewProvider
+                                league={selectedLeagueDetails.apiValue}
+                                season={selectedSeason}
+                            >
                                 <OverviewPage />
                             </OverviewProvider>
                         }
