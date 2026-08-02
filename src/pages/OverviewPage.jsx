@@ -2,6 +2,9 @@ import Box from "@mui/material/Box";
 
 import SummaryCards from "../page_components/overview/SummaryCards";
 import ScoringOverview from "../page_components/overview/ScoringOverview";
+import LoadingOverlay from "../component/LoadingOverlay.jsx";
+
+import { useOverview } from "../context/OverviewContext.jsx";
 
 import SeasonSummaryTest from "../test_components/SeasonSummaryTest.jsx";
 
@@ -28,8 +31,12 @@ const detailPanelSx = {
 };
 
 export default function OverviewPage() {
+    const { isLoading } = useOverview();
+
     return (
-        <Box>
+        <Box sx={{position: "relative"}}>
+            {isLoading && <LoadingOverlay />}
+
             <SummaryCards />
 
             <Box sx={detailGridSx}>
@@ -40,7 +47,7 @@ export default function OverviewPage() {
                 <Box sx={detailPanelSx}></Box>
             </Box>
 
-            <SeasonSummaryTest/>
+            <SeasonSummaryTest />
         </Box>
     );
 }
