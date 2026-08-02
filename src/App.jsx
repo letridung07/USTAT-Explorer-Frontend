@@ -15,8 +15,7 @@ import CompareTeamsPage from "./pages/CompareTeamsPage.jsx";
 import ComparePlayersPage from "./pages/ComparePlayersPage.jsx";
 
 import { formatSeason, LEAGUES } from "./data/leagueCatalog.js";
-
-
+import { OverviewProvider } from "./context/OverviewContext.jsx";
 
 // @@@@@@@@@@@ ALL SX GOES HERE @@@@@@@@@@@@@@@@@@
 const appContainerSx = {
@@ -45,15 +44,15 @@ const mainContentSx = {
 
 // @@@@@@@@@@@ ALL SX IS ABOVE @@@@@@@@@@@@@@@@@@
 
-
-
 function App() {
     const [selectedLeague, setSelectedLeague] = useState("epl");
     const [selectedSeason, setSelectedSeason] = useState(2025);
 
     const seasonName = formatSeason(selectedSeason);
 
-    const selectedLeagueDetails = LEAGUES.find((item) => item.id === selectedLeague)
+    const selectedLeagueDetails = LEAGUES.find(
+        (item) => item.id === selectedLeague,
+    );
 
     return (
         <Box sx={appContainerSx}>
@@ -78,11 +77,21 @@ function App() {
 
                 <Routes>
                     {/* Only showing Overview page for now */}
-                    <Route path="/" element={<OverviewPage league={selectedLeagueDetails.apiName} season={selectedSeason}/>} />
+                    <Route
+                        path="/"
+                        element={
+                            <OverviewProvider>
+                                <OverviewPage />
+                            </OverviewProvider>
+                        }
+                    />
                     <Route path="/matches" element={<MatchesPage />} />
                     <Route path="/league-table" element={<LeagueTablePage />} />
                     <Route path="/players" element={<PlayersPage />} />
-                    <Route path="/compare-teams" element={<CompareTeamsPage />} />
+                    <Route
+                        path="/compare-teams"
+                        element={<CompareTeamsPage />}
+                    />
                     <Route
                         path="/compare-players"
                         element={<ComparePlayersPage />}

@@ -1,32 +1,16 @@
 import { useEffect, useState } from "react";
 import { getSeasonSummary } from "../services/api.js";
 
-export default function SeasonSummaryTest({league, season}) {
-    const [summary, setSummary] = useState(null);
-    const [error, setError] = useState(null);
+import { useOverview } from "../context/OverviewContext.jsx";
 
-    useEffect(() => {
-        setError(null)
-        async function loadSeasonSummary() {
-            try {
-                const data = await getSeasonSummary(league, season);
-
-                console.log("Season summary: ", data);
-                setSummary(data);
-            } catch (requestError) {
-                console.error(requestError);
-                setError(requestError.message);
-            }
-        }
-
-        loadSeasonSummary();
-    }, [league, season]);
+export default function SeasonSummaryTest() {
+    const { seasonSummary, isLoading, error } = useOverview();
 
     if (error) {
         return <p>Error: {error}</p>;
     }
 
-    if (!summary) {
+    if (!seasonSummary) {
         return <p>Loading season summary</p>;
     }
 
@@ -34,13 +18,13 @@ export default function SeasonSummaryTest({league, season}) {
         <div>
             <h2>Season Summary</h2>
 
-            <p>Total matches: {summary.total_matches}</p>
-            <p>Total goals: {summary.total_goals}</p>
-            <p>Total xG: {summary.total_xg}</p>
+            <p>Total matches: {seasonSummary.total_matches}</p>
+            <p>Total goals: {seasonSummary.total_goals}</p>
+            <p>Total xG: {seasonSummary.total_xg}</p>
 
             <h3>Raw API response</h3>
 
-            <pre>{JSON.stringify(summary, null, 2)}</pre>
+            <pre>{JSON.stringify(seasonSummary, null, 2)}</pre>
         </div>
     );
 }
