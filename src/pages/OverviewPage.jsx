@@ -31,10 +31,21 @@ const detailPanelSx = {
 };
 
 export default function OverviewPage() {
-    const { isLoading } = useOverview();
+    const { seasonSummary, isLoading, error } = useOverview();
 
+    // Initial load: there is no old data to display yet.
+    if (!seasonSummary) {
+        return (
+            <Box sx={{ position: "relative", minHeight: 400 }}>
+                {isLoading && <LoadingOverlay />}
+                {!isLoading && error && <p>Failed to load overview: {error}</p>}
+            </Box>
+        );
+    }
+
+    // Refresh: keep old data visible beneath the overlay.
     return (
-        <Box sx={{position: "relative"}}>
+        <Box sx={{ position: "relative" }}>
             {isLoading && <LoadingOverlay />}
 
             <SummaryCards />

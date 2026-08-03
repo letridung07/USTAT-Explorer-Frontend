@@ -4,6 +4,8 @@ import Typography from "@mui/material/Typography";
 import SportsSoccer from "@mui/icons-material/SportsSoccer";
 import QueryStatsOutlined from "@mui/icons-material/QueryStatsOutlined";
 
+import { useOverview } from "../../context/OverviewContext";
+
 const panelHeaderSx = {
     display: "flex",
     alignItems: "center",
@@ -135,6 +137,8 @@ const benchmarkHighlightSx = {
 // }
 
 export default function ScoringOverview() {
+    const { seasonSummary } = useOverview();
+
     return (
         <>
             <Box sx={panelHeaderSx}>
@@ -149,7 +153,9 @@ export default function ScoringOverview() {
                     <SportsSoccer sx={scoringBallIconSx} />
 
                     <Typography sx={scoringLabelSx}>Goals / Match</Typography>
-                    <Typography sx={scoringValueSx}>2.75</Typography>
+                    <Typography sx={scoringValueSx}>
+                        {seasonSummary.goal_per_match}
+                    </Typography>
 
                     {/* Progress bar */}
                     <Box sx={progressTrackSx}>
@@ -177,7 +183,7 @@ export default function ScoringOverview() {
                             <Typography
                                 sx={[benchmarkValueSx, benchmarkHighlightSx]}
                             >
-                                2.75
+                                {seasonSummary.goal_per_match}
                             </Typography>
                         </Box>
                         <Box>
@@ -194,7 +200,9 @@ export default function ScoringOverview() {
                     <Box sx={scoringXgIconSx}>xG</Box>
 
                     <Typography sx={scoringLabelSx}>xG / Match</Typography>
-                    <Typography sx={scoringValueSx}>3.06</Typography>
+                    <Typography sx={scoringValueSx}>
+                        {seasonSummary.xg_per_match}
+                    </Typography>
                     <Box sx={progressTrackSx}>
                         <Box sx={progressFillSx("72%")} />
                     </Box>
@@ -219,7 +227,7 @@ export default function ScoringOverview() {
                             <Typography
                                 sx={[benchmarkValueSx, benchmarkHighlightSx]}
                             >
-                                3.06
+                                {seasonSummary.xg_per_match}
                             </Typography>
                         </Box>
                         <Box>

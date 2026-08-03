@@ -5,6 +5,8 @@ import EventAvailableOutlined from "@mui/icons-material/EventAvailableOutlined";
 import CalendarMonthOutlined from "@mui/icons-material/CalendarMonthOutlined";
 import SportsSoccer from "@mui/icons-material/SportsSoccer";
 
+import { useOverview } from "../../context/OverviewContext";
+
 const summaryGridSx = {
     display: "grid",
     gridTemplateColumns: "1fr 1fr 1fr 1fr",
@@ -59,29 +61,36 @@ const statValueSx = {
     lineHeight: 1.1,
 };
 
-const summaryStatistics = [
-    {
-        title: "Completed Matches",
-        value: "380",
-        icon: <EventAvailableOutlined />,
-        color: "#5b38c8",
-    },
-    {
-        title: "Upcoming Matches",
-        value: "0",
-        icon: <CalendarMonthOutlined />,
-        color: "#1768d7",
-    },
-    {
-        title: "Total Goals",
-        value: "1045",
-        icon: <SportsSoccer />,
-        color: "#20ad50",
-    },
-    { title: "Total xG", value: "1162.40", icon: "xG", color: "#ff9914" },
-];
-
 export default function SummaryCards() {
+    const { seasonSummary } = useOverview();
+
+    const summaryStatistics = [
+        {
+            title: "Completed Matches",
+            value: seasonSummary.total_matches,
+            icon: <EventAvailableOutlined />,
+            color: "#5b38c8",
+        },
+        {
+            title: "Upcoming Matches",
+            value: "0",
+            icon: <CalendarMonthOutlined />,
+            color: "#1768d7",
+        },
+        {
+            title: "Total Goals",
+            value: seasonSummary.total_goals,
+            icon: <SportsSoccer />,
+            color: "#20ad50",
+        },
+        {
+            title: "Total xG",
+            value: seasonSummary.total_xg,
+            icon: "xG",
+            color: "#ff9914",
+        },
+    ];
+
     return (
         <Box sx={summaryGridSx}>
             {/* Plug in data */}
