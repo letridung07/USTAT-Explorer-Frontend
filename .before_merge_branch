@@ -1,0 +1,2 @@
+Retire services/api.js before merging overview-page-revamp to main
+Because this function has been replaced by Orval auto generated API

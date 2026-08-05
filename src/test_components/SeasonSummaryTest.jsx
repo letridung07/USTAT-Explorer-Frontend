@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { getSeasonSummary } from "../services/api.js";
 
 import { useOverview } from "../context/OverviewContext.jsx";
 

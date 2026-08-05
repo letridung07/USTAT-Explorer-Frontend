@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-import { getSeasonSummary } from "../services/api";
+import { getSeasonSummaryOld } from "../services/api";
+
+import { getSeasonSummary } from "../api/generated/overview.ts"
 
 const OverviewContext = createContext(null);
 

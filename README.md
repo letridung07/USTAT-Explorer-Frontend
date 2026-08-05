@@ -15,7 +15,7 @@ A website that allows use to interactively view football stats from leagues incl
 5. Run dev: `npm run dev`
 
 ## Commands:
-- Generate API using Orval: `npm run orval`
+- Generate API using Orval: `npm run generate-api`
 
 ## Copyright:
 2026 @ Le Tri Dung
