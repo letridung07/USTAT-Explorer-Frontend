@@ -13,7 +13,7 @@ const loadingOverlaySx = {
 
     // Place the circle near the top
     alignItems: "flex-start",
-    paddingTop: 8,
+    paddingTop: 15,
     boxSizing: "border-box",
 
     // Dark transparent layer matching your website theme
@@ -30,8 +30,8 @@ export default function LoadingOverlay() {
     return (
         <Box sx={loadingOverlaySx}>
             <CircularProgress
-                size={45}
-                thickness={4}
+                size={100}
+                thickness={10}
                 sx={{ color: "#4da3ff" }}
             />
         </Box>
