@@ -1,0 +1,367 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "USTAT Explorer Backend",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/overview/season_summary": {
+      "get": {
+        "tags": [
+          "Overview"
+        ],
+        "summary": "Get Overview Season Summary",
+        "operationId": "getSeasonSummary",
+        "parameters": [
+          {
+            "name": "league",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "EPL",
+              "title": "League"
+            }
+          },
+          {
+            "name": "season",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "2025",
+              "title": "Season"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OverviewSeasonSummary"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/overview/highest_scoring": {
+      "get": {
+        "tags": [
+          "Overview"
+        ],
+        "summary": "Get Overview Highest Scoring",
+        "operationId": "getHighestScoring",
+        "parameters": [
+          {
+            "name": "league",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "EPL",
+              "title": "League"
+            }
+          },
+          {
+            "name": "season",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "2025",
+              "title": "Season"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OverviewHighestScoring"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/overview/scoring_overview": {
+      "get": {
+        "tags": [
+          "Overview"
+        ],
+        "summary": "Get Scoring Overview",
+        "operationId": "getScoringOverview",
+        "parameters": [
+          {
+            "name": "league",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "EPL",
+              "title": "League"
+            }
+          },
+          {
+            "name": "season",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "2025",
+              "title": "Season"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OverviewGoalAndXGPerMatch"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "OverviewGoalAndXGPerMatch": {
+        "properties": {
+          "selected_goal_per_match": {
+            "type": "number",
+            "title": "Selected Goal Per Match"
+          },
+          "highest_goal_per_match": {
+            "type": "number",
+            "title": "Highest Goal Per Match"
+          },
+          "lowest_goal_per_match": {
+            "type": "number",
+            "title": "Lowest Goal Per Match"
+          },
+          "average_goal_per_match": {
+            "type": "number",
+            "title": "Average Goal Per Match"
+          },
+          "selected_xg_per_match": {
+            "type": "number",
+            "title": "Selected Xg Per Match"
+          },
+          "highest_xg_per_match": {
+            "type": "number",
+            "title": "Highest Xg Per Match"
+          },
+          "lowest_xg_per_match": {
+            "type": "number",
+            "title": "Lowest Xg Per Match"
+          },
+          "average_xg_per_match": {
+            "type": "number",
+            "title": "Average Xg Per Match"
+          }
+        },
+        "type": "object",
+        "required": [
+          "selected_goal_per_match",
+          "highest_goal_per_match",
+          "lowest_goal_per_match",
+          "average_goal_per_match",
+          "selected_xg_per_match",
+          "highest_xg_per_match",
+          "lowest_xg_per_match",
+          "average_xg_per_match"
+        ],
+        "title": "OverviewGoalAndXGPerMatch"
+      },
+      "OverviewHighestScoring": {
+        "properties": {
+          "match_id": {
+            "type": "integer",
+            "title": "Match Id"
+          },
+          "match_name": {
+            "type": "string",
+            "title": "Match Name"
+          },
+          "h_goal": {
+            "type": "integer",
+            "title": "H Goal"
+          },
+          "a_goal": {
+            "type": "integer",
+            "title": "A Goal"
+          }
+        },
+        "type": "object",
+        "required": [
+          "match_id",
+          "match_name",
+          "h_goal",
+          "a_goal"
+        ],
+        "title": "OverviewHighestScoring"
+      },
+      "OverviewSeasonSummary": {
+        "properties": {
+          "total_matches": {
+            "type": "integer",
+            "title": "Total Matches"
+          },
+          "total_goals": {
+            "type": "integer",
+            "title": "Total Goals"
+          },
+          "total_xg": {
+            "type": "number",
+            "title": "Total Xg"
+          },
+          "xg_per_match": {
+            "type": "number",
+            "title": "Xg Per Match"
+          },
+          "goal_per_match": {
+            "type": "number",
+            "title": "Goal Per Match"
+          },
+          "home_win": {
+            "type": "integer",
+            "title": "Home Win"
+          },
+          "home_win_percentage": {
+            "type": "number",
+            "title": "Home Win Percentage"
+          },
+          "away_win": {
+            "type": "integer",
+            "title": "Away Win"
+          },
+          "away_win_percentage": {
+            "type": "number",
+            "title": "Away Win Percentage"
+          },
+          "draws": {
+            "type": "integer",
+            "title": "Draws"
+          },
+          "draw_percentage": {
+            "type": "number",
+            "title": "Draw Percentage"
+          },
+          "avg_home_xg": {
+            "type": "number",
+            "title": "Avg Home Xg"
+          },
+          "avg_away_xg": {
+            "type": "number",
+            "title": "Avg Away Xg"
+          }
+        },
+        "type": "object",
+        "required": [
+          "total_matches",
+          "total_goals",
+          "total_xg",
+          "xg_per_match",
+          "goal_per_match",
+          "home_win",
+          "home_win_percentage",
+          "away_win",
+          "away_win_percentage",
+          "draws",
+          "draw_percentage",
+          "avg_home_xg",
+          "avg_away_xg"
+        ],
+        "title": "OverviewSeasonSummary"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

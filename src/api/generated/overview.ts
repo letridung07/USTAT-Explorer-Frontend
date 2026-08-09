@@ -6,8 +6,10 @@
  */
 import type {
   GetHighestScoringParams,
+  GetScoringOverviewParams,
   GetSeasonSummaryParams,
   HTTPValidationError,
+  OverviewGoalAndXGPerMatch,
   OverviewHighestScoring,
   OverviewSeasonSummary
 } from '../model';
@@ -104,6 +106,55 @@ export const getGetHighestScoringUrl = (params?: GetHighestScoringParams,) => {
 export const getHighestScoring = async (params?: GetHighestScoringParams, options?: Parameters<typeof customFetch>[1]): Promise<getHighestScoringResponse> => {
 
   return customFetch<getHighestScoringResponse>(getGetHighestScoringUrl(params),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+export type getScoringOverviewResponse200 = {
+  data: OverviewGoalAndXGPerMatch
+  status: 200
+}
+
+export type getScoringOverviewResponse422 = {
+  data: HTTPValidationError
+  status: 422
+}
+
+export type getScoringOverviewResponseSuccess = (getScoringOverviewResponse200) & {
+  headers: Headers;
+};
+export type getScoringOverviewResponseError = (getScoringOverviewResponse422) & {
+  headers: Headers;
+};
+
+export type getScoringOverviewResponse = (getScoringOverviewResponseSuccess | getScoringOverviewResponseError)
+
+export const getGetScoringOverviewUrl = (params?: GetScoringOverviewParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/overview/scoring_overview?${stringifiedParams}` : `/overview/scoring_overview`
+}
+
+/**
+ * @summary Get Scoring Overview
+ */
+export const getScoringOverview = async (params?: GetScoringOverviewParams, options?: Parameters<typeof customFetch>[1]): Promise<getScoringOverviewResponse> => {
+
+  return customFetch<getScoringOverviewResponse>(getGetScoringOverviewUrl(params),
   {
     ...options,
     method: 'GET'

@@ -17,6 +17,12 @@ A website that allows use to interactively view football stats from leagues incl
 ## Commands:
 - Generate API using Orval: `npm run generate-api`
 
+## Using npm run generate-api
+1. Run backend fastapi and go to http://127.0.0.1:8000/openapi.json
+2. Paste the content in that link to a new file in /openapi_shema
+3. Go to orval.config.ts and change the input target to the new file created in step 2
+4. Run the command: `npm run generate-api`
+
 ## Copyright:
 2026 @ Le Tri Dung
 2026 @ Le Minh Hieu

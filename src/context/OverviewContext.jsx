@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 import { getSeasonSummaryOld } from "../services/api";
 
-import { getSeasonSummary } from "../api/generated/overview.ts"
+import { getSeasonSummary, getScoringOverview } from "../api/generated/overview.ts"
 
 const OverviewContext = createContext(null);
 
@@ -10,6 +10,7 @@ const OverviewContext = createContext(null);
 // function to create and provide shared data
 export function OverviewProvider({ children, league, season }) {
     const [seasonSummary, setSeasonSummary] = useState(null);
+    const [scoringOverview, setScoringOverview] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -19,12 +20,15 @@ export function OverviewProvider({ children, league, season }) {
                 setIsLoading(true);
                 setError(null);
 
-                const data = await getSeasonSummary(league, season);
+                const seasonSummaryData = await getSeasonSummary(league, season);
+                const scoringOverviewData = await getScoringOverview(league, season);
 
-                setSeasonSummary(data);
+                setSeasonSummary(seasonSummaryData);
+                setScoringOverview(scoringOverviewData);
             } catch (error) {
                 setError(error.message);
                 setSeasonSummary(null);
+                setScoringOverview(null);
             } finally {
                 setIsLoading(false);
             }
@@ -35,6 +39,7 @@ export function OverviewProvider({ children, league, season }) {
 
     const contextValue = {
         seasonSummary,
+        scoringOverview,
         isLoading,
         error,
     };

@@ -137,7 +137,7 @@ const benchmarkHighlightSx = {
 // }
 
 export default function ScoringOverview() {
-    const { seasonSummary } = useOverview();
+    const { scoringOverview } = useOverview();
 
     return (
         <>
@@ -154,7 +154,7 @@ export default function ScoringOverview() {
 
                     <Typography sx={scoringLabelSx}>Goals / Match</Typography>
                     <Typography sx={scoringValueSx}>
-                        {seasonSummary.goal_per_match}
+                        {scoringOverview.selected_goal_per_match}
                     </Typography>
 
                     {/* Progress bar */}
@@ -168,13 +168,17 @@ export default function ScoringOverview() {
                             <Typography sx={benchmarkLabelSx}>
                                 Lowest
                             </Typography>
-                            <Typography sx={benchmarkValueSx}>1.28</Typography>
+                            <Typography sx={benchmarkValueSx}>
+                                {scoringOverview.lowest_goal_per_match}
+                            </Typography>
                         </Box>
                         <Box>
                             <Typography sx={benchmarkLabelSx}>
                                 All-time Avg
                             </Typography>
-                            <Typography sx={benchmarkValueSx}>2.45</Typography>
+                            <Typography sx={benchmarkValueSx}>
+                                {scoringOverview.average_goal_per_match}
+                            </Typography>
                         </Box>
                         <Box>
                             <Typography sx={benchmarkLabelSx}>
@@ -183,14 +187,16 @@ export default function ScoringOverview() {
                             <Typography
                                 sx={[benchmarkValueSx, benchmarkHighlightSx]}
                             >
-                                {seasonSummary.goal_per_match}
+                                {scoringOverview.selected_goal_per_match}
                             </Typography>
                         </Box>
                         <Box>
                             <Typography sx={benchmarkLabelSx}>
                                 Highest
                             </Typography>
-                            <Typography sx={benchmarkValueSx}>4.12</Typography>
+                            <Typography sx={benchmarkValueSx}>
+                                {scoringOverview.highest_goal_per_match}
+                            </Typography>
                         </Box>
                     </Box>
                 </Box>
@@ -201,7 +207,7 @@ export default function ScoringOverview() {
 
                     <Typography sx={scoringLabelSx}>xG / Match</Typography>
                     <Typography sx={scoringValueSx}>
-                        {seasonSummary.xg_per_match}
+                        {scoringOverview.selected_xg_per_match}
                     </Typography>
                     <Box sx={progressTrackSx}>
                         <Box sx={progressFillSx("72%")} />
@@ -212,13 +218,17 @@ export default function ScoringOverview() {
                             <Typography sx={benchmarkLabelSx}>
                                 Lowest
                             </Typography>
-                            <Typography sx={benchmarkValueSx}>1.45</Typography>
+                            <Typography sx={benchmarkValueSx}>
+                                {scoringOverview.lowest_xg_per_match}
+                            </Typography>
                         </Box>
                         <Box>
                             <Typography sx={benchmarkLabelSx}>
                                 All-time Avg
                             </Typography>
-                            <Typography sx={benchmarkValueSx}>2.71</Typography>
+                            <Typography sx={benchmarkValueSx}>
+                                {scoringOverview.average_xg_per_match}
+                            </Typography>
                         </Box>
                         <Box>
                             <Typography sx={benchmarkLabelSx}>
@@ -227,14 +237,16 @@ export default function ScoringOverview() {
                             <Typography
                                 sx={[benchmarkValueSx, benchmarkHighlightSx]}
                             >
-                                {seasonSummary.xg_per_match}
+                                {scoringOverview.selected_xg_per_match}
                             </Typography>
                         </Box>
                         <Box>
                             <Typography sx={benchmarkLabelSx}>
                                 Highest
                             </Typography>
-                            <Typography sx={benchmarkValueSx}>4.81</Typography>
+                            <Typography sx={benchmarkValueSx}>
+                                {scoringOverview.highest_xg_per_match}
+                            </Typography>
                         </Box>
                     </Box>
                 </Box>

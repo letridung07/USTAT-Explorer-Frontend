@@ -3,7 +3,7 @@ import { defineConfig } from "orval";
 export default defineConfig({
   understat: {
     input: {
-      target: "./openapi_schema/050826_openapi.json",
+      target: "./openapi_schema/080826_openapi.json",
     },
     output: {
       mode: "tags",

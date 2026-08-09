@@ -6,8 +6,10 @@
  */
 
 export * from './getHighestScoringParams';
+export * from './getScoringOverviewParams';
 export * from './getSeasonSummaryParams';
 export * from './hTTPValidationError';
+export * from './overviewGoalAndXGPerMatch';
 export * from './overviewHighestScoring';
 export * from './overviewSeasonSummary';
 export * from './validationError';
