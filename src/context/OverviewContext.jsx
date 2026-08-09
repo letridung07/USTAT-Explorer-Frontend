@@ -20,8 +20,8 @@ export function OverviewProvider({ children, league, season }) {
                 setIsLoading(true);
                 setError(null);
 
-                const seasonSummaryData = await getSeasonSummary(league, season);
-                const scoringOverviewData = await getScoringOverview(league, season);
+                const seasonSummaryData = await getSeasonSummary({league, season});
+                const scoringOverviewData = await getScoringOverview({league, season});
 
                 setSeasonSummary(seasonSummaryData);
                 setScoringOverview(scoringOverviewData);
