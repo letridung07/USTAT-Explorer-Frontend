@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 
 import SummaryCards from "../page_components/overview/SummaryCards";
 import ScoringOverview from "../page_components/overview/ScoringOverview";
+import MatchOutcomes from "../page_components/overview/MatchOutcomes";
 import LoadingOverlay from "../component/LoadingOverlay.jsx";
 
 import { useOverview } from "../context/OverviewContext.jsx";
@@ -54,7 +55,9 @@ export default function OverviewPage() {
                 <Box sx={detailPanelSx}>
                     <ScoringOverview />
                 </Box>
-                <Box sx={detailPanelSx}></Box>
+                <Box sx={detailPanelSx}>
+                    <MatchOutcomes />
+                </Box>
                 <Box sx={detailPanelSx}></Box>
             </Box>
 
